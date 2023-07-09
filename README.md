@@ -13,12 +13,14 @@
 9. mending is now 10x less effective
 10. Shield recipe requires 2 scutes now
 11. 2 minute pvp cooldown
+12. Villager changes
+    - Armor removed from trades
+    - 1 in 7 chance for curing to fail
+    - tools from villagers are damaged
 
 ## TODO
 
 1. Limit some good enchantments to a lower level
-2. nerf villagers
-3. make shields harder to craft
 4. Make explosions less op
 5. Change shulkers to have 1 row of items instead of 3
 6. A written book with all the changes
