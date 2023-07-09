@@ -1,0 +1,5 @@
+name: HarderMC
+version: '${version}'
+main: dev.tricked.hardermc.HarderMC
+api-version: '1.20'
+load: STARTUP
