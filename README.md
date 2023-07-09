@@ -9,13 +9,14 @@
 5. Mining below 30 in the nether increases durability usage
 6. Enchantment table now requires crying obsidian and 2 ghast tears
 7. Elytra now uses 40x more durability
+8. armor progression
 
 ## TODO
 
 1. Limit some good enchantments to a lower level
 2. nerf villagers
-3. armor progression
-4. make shields harder to craft
-5. Make explosions less op
-6. Change shulkers to haver 1 row of items instead of 3
-7. A written book with all the changes
+3. make shields harder to craft
+4. Make explosions less op
+5. Change shulkers to haver 1 row of items instead of 3
+6. A written book with all the changes
+7. replace all armor with enchantment books

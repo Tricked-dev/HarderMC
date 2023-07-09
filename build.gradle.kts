@@ -1,6 +1,19 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URI
+
 plugins {
     java
     id("xyz.jpenilla.run-paper") version "2.1.0"
+    kotlin("jvm") version "1.9.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+}
+
+object Versions {
+    const val kotlin = "1.9.0"
+    const val coroutines = "1.6.2"
+    const val serialization = "1.3.3"
+    const val atomicfu = "0.17.3"
+    const val datetime = "0.3.2"
 }
 
 group = "dev.tricked"
@@ -16,9 +29,50 @@ repositories {
     }
 }
 
+tasks.create<Jar>("sourcesJar") {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+tasks.create<Jar>("javadocJar") {
+    dependsOn.add(tasks.getByName("javadoc"))
+    archiveClassifier.set("javadoc")
+    from(tasks.getByName("javadoc"))
+}
+
+tasks.shadowJar {
+    manifest {
+        attributes(
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to project.version
+        )
+    }
+}
+
+artifacts {
+    archives(tasks.getByName("sourcesJar"))
+    archives(tasks.getByName("javadocJar"))
+    archives(tasks.shadowJar)
+}
+
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+
+    api("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
+    api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+    api("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}")
+    api("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")
+
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:${Versions.coroutines}")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${Versions.coroutines}")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:${Versions.serialization}")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:${Versions.serialization}")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-cbor-jvm:${Versions.serialization}")
+    api("org.jetbrains.kotlinx:atomicfu-jvm:${Versions.atomicfu}")
+    api("org.jetbrains.kotlinx:kotlinx-datetime-jvm:${Versions.datetime}")
 }
+
 
 val targetJavaVersion = 17
 java {
@@ -33,6 +87,24 @@ java {
 tasks.withType<JavaCompile>().configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
         options.release.set(targetJavaVersion)
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    // Existing configurations...
+    doFirst {
+        options.compilerArgs = listOf("-Xlint:-processing")
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "17"
+}
+
+sourceSets {
+    getByName("main") {
+        java.srcDirs("src/main/java")
+        kotlin.srcDirs("src/main/kotlin")
     }
 }
 

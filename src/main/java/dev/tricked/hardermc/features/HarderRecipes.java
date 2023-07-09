@@ -1,14 +1,21 @@
 package dev.tricked.hardermc.features;
 
+import dev.tricked.hardermc.HarderMC;
+import dev.tricked.hardermc.utilities.BaseTool;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class HarderRecipes {
+public class HarderRecipes extends BaseTool {
+    public HarderRecipes(@NotNull HarderMC plugin) {
+        super(plugin);
+    }
+
     public void AddRecipes() {
         addCustomEnchanttableRecipe();
     }

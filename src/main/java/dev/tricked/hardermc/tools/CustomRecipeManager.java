@@ -1,5 +1,7 @@
 package dev.tricked.hardermc.tools;
 
+import dev.tricked.hardermc.HarderMC;
+import dev.tricked.hardermc.utilities.BaseTool;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -15,13 +17,24 @@ import java.util.List;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class CustomRecipeManager implements Listener {
+public class CustomRecipeManager extends BaseTool implements Listener {
     private List<CustomRecipe> customRecipes = new ArrayList<>();
+
+    public CustomRecipeManager(@NotNull HarderMC plugin) {
+        super(plugin);
+    }
 
     public void addCustomRecipe(CustomRecipe data) {
         Bukkit.removeRecipe(data.key);
         getServer().addRecipe(data.recipe);
         customRecipes.add(data);
+    }
+
+    public void addCustomRecipes(CustomRecipe... data) {
+        for (CustomRecipe recipe : data) {
+            getLog().info("Adding custom recipe: " + recipe.key);
+            addCustomRecipe(recipe);
+        }
     }
 
 

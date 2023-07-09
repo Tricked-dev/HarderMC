@@ -1,6 +1,7 @@
 package dev.tricked.hardermc.nether;
 
 import dev.tricked.hardermc.HarderMC;
+import dev.tricked.hardermc.utilities.BaseTool;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,10 +18,15 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class NetherEventHandler implements Listener {
+public class NetherEventHandler extends BaseTool implements Listener {
+
+    public NetherEventHandler(@NotNull HarderMC plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onPiglinBarter(PiglinBarterEvent event) {
@@ -76,8 +82,8 @@ public class NetherEventHandler implements Listener {
                 item.setItemMeta((ItemMeta) damageable);
             }
         }
-        HarderMC.log.info("Breaking Nether Block");
-        HarderMC.log.info("Type: " +  item.getType());
+        getPlugin().getLog().info("Breaking Nether Block");
+        getPlugin().getLog().info("Type: " +  item.getType());
     }
 
     @EventHandler
@@ -103,10 +109,10 @@ public class NetherEventHandler implements Listener {
             // Modify the durability usage
             int damage = event.getDamage() * 40;
             ItemMeta itemMeta = event.getItem().getItemMeta();
-            HarderMC.log.info("DMG " + damage);
-            HarderMC.log.info("TOTAL_DMG " + event.getItem().getType().getMaxDurability());
+            getLog().info("DMG " + damage);
+            getLog().info("TOTAL_DMG " + event.getItem().getType().getMaxDurability());
             if (itemMeta instanceof Damageable damageable && damageable.getDamage() + damage >= event.getItem().getType().getMaxDurability()) {
-                HarderMC.log.info("DMG123 " + damageable.getDamage());
+                getLog().info("DMG123 " + damageable.getDamage());
                 damageable.setDamage(event.getItem().getType().getMaxDurability()-1);
                 event.getItem().setItemMeta(itemMeta);
                 event.setCancelled(true);

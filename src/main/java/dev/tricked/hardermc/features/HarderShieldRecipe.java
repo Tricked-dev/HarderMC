@@ -1,6 +1,5 @@
 package dev.tricked.hardermc.features;
 
-import dev.tricked.hardermc.HarderMC;
 import dev.tricked.hardermc.tools.CustomRecipe;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

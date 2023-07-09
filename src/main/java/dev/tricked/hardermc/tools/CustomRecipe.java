@@ -19,4 +19,7 @@ abstract public class CustomRecipe {
         this.triggerIngredients = Arrays.stream(triggerIngredients).toList();
     }
 
+    public void setKey(@NotNull NamespacedKey key) {
+        this.key = key;
+    }
 }

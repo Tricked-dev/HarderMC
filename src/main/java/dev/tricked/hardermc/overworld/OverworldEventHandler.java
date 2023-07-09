@@ -1,26 +1,26 @@
 package dev.tricked.hardermc.overworld;
 
-import org.bukkit.Bukkit;
+import dev.tricked.hardermc.HarderMC;
+import dev.tricked.hardermc.utilities.BaseTool;
 import org.bukkit.Material;
-import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Evoker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BlockStateMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.Random;
 
-public class OverworldEventHandler implements Listener {
+public class OverworldEventHandler extends BaseTool implements Listener {
     private Map<Player, Inventory> customInventories;
+
+    public OverworldEventHandler(@NotNull HarderMC plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
