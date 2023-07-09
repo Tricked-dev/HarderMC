@@ -10,6 +10,9 @@
 6. Enchantment table now requires crying obsidian and 2 ghast tears
 7. Elytra now uses 40x more durability
 8. armor progression
+9. mending is now 10x less effective
+10. Shield recipe requires 2 scutes now
+11. 2 minute pvp cooldown
 
 ## TODO
 
@@ -17,6 +20,6 @@
 2. nerf villagers
 3. make shields harder to craft
 4. Make explosions less op
-5. Change shulkers to haver 1 row of items instead of 3
+5. Change shulkers to have 1 row of items instead of 3
 6. A written book with all the changes
 7. replace all armor with enchantment books

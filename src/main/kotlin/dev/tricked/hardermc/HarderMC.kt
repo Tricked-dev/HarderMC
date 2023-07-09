@@ -4,6 +4,8 @@ import dev.tricked.hardermc.end.EndEventHandler
 import dev.tricked.hardermc.end.EndRecipeHandler
 import dev.tricked.hardermc.features.HarderRecipes
 import dev.tricked.hardermc.features.HarderShieldRecipe
+import dev.tricked.hardermc.features.MendingNerf
+import dev.tricked.hardermc.features.PVPRegenCooldown
 import dev.tricked.hardermc.nether.NetherEventHandler
 import dev.tricked.hardermc.overworld.OverworldEventHandler
 import dev.tricked.hardermc.recipes.chainmail.ChainmailBoots
@@ -28,10 +30,15 @@ public class HarderMC : JavaPlugin(), Listener {
     public var log: Logger = logger;
     override fun onEnable() {
         val customRecipeManager = CustomRecipeManager(this)
+        val pluginManager = Bukkit.getPluginManager()
+        pluginManager.registerEvents(MendingNerf(this), this)
+
         Bukkit.getPluginManager().registerEvents(this, this)
         Bukkit.getPluginManager().registerEvents(EndEventHandler(this), this)
         Bukkit.getPluginManager().registerEvents(NetherEventHandler(this), this)
         Bukkit.getPluginManager().registerEvents(OverworldEventHandler(this), this)
+        Bukkit.getPluginManager().registerEvents(PVPRegenCooldown(this), this)
+
         Bukkit.getPluginManager().registerEvents(customRecipeManager, this)
         customRecipeManager.addCustomRecipes(
             HarderShieldRecipe(),
