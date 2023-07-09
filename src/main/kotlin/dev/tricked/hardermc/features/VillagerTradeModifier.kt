@@ -86,6 +86,12 @@ class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
                 recipe.ingredients = ingredients
                 recipe.setIgnoreDiscounts(true)
             }
+            if (resultItem.type== Material.EMERALD) {
+                getLog().info("Editing emerald trades")
+                if(recipe.maxUses > 4) {
+                    recipe.maxUses = 4
+                }
+            }
         }
         villager.recipes = recipes
     }

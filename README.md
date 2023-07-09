@@ -17,6 +17,7 @@
     - Armor removed from trades
     - 1 in 7 chance for curing to fail
     - tools from villagers are damaged
+    - limit emerald trades to 4 usages
 
 ## TODO
 
