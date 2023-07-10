@@ -1,5 +1,7 @@
 # HarderMC
 
+A plugin that makes various things *harder*
+
 ## Changes
 
 1. eye of ender requires 8 blaze powder
@@ -32,4 +34,8 @@
 ## Server Plugin TODO:
 
 8. change end world daily
+
+## License
+
+[License](./LICENSE)
 
