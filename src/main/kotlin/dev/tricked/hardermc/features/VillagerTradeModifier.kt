@@ -30,7 +30,7 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
 
         val villager = event.rightClicked as Villager
         // make the recipes mutable
-        var recipes = villager.recipes.toMutableList()
+        val recipes = villager.recipes.toMutableList()
 
 
         // Modify existing armor trades
@@ -76,12 +76,12 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
                 customTrade.priceMultiplier = recipe.priceMultiplier
                 customTrade.ingredients = recipe.ingredients
 
-                recipes.set(recipes.indexOf(recipe), customTrade)
+                recipes[recipes.indexOf(recipe)] = customTrade
             }
             if (resultItem.type == Material.SHIELD) {
                 getLog().info("Editing shield trades")
                 recipe.priceMultiplier = 0f
-                var ingredients = recipe.ingredients.toMutableList()
+                val ingredients = recipe.ingredients.toMutableList()
 
                 ingredients[1] = ItemStack(Material.SCUTE, 2)
                 recipe.ingredients = ingredients
@@ -118,7 +118,7 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
                 // a 1 in 7 chance for curing to fail
                 if (random.nextInt(7) != 3) return
                 event.isCancelled = true
-                var v = event.entity as ZombieVillager
+                val v = event.entity as ZombieVillager
                 v.health = 0.0
             }
         }

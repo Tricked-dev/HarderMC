@@ -1,5 +1,8 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URI
 
 plugins {
     java
@@ -97,7 +100,7 @@ tasks.withType<JavaCompile>().configureEach {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = "17"
 }
 
@@ -118,10 +121,7 @@ tasks.withType<Copy>().named("processResources") {
 
 
 tasks {
-  runServer {
-    // Configure the Minecraft version for our task.
-    // This is the only required configuration besides applying the plugin.
-    // Your plugin's jar (or shadowJar if present) will be used automatically.
-    minecraftVersion("1.20.1")
-  }
+    runServer {
+        minecraftVersion("1.20.1")
+    }
 }

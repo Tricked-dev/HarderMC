@@ -13,7 +13,7 @@ import java.util.*
 
 
 class MendingNerf(mc: HarderMC) : BaseTool(mc), Listener {
-    val random = Random()
+    private val random = Random()
 
     @EventHandler
     fun onItemMend(event: PlayerItemMendEvent) {

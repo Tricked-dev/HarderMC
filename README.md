@@ -18,7 +18,7 @@
     - 1 in 7 chance for curing to fail
     - tools from villagers are damaged
     - limit emerald trades to 4 usages
-1. Beds no longer explode in the nether / end and respawn anchors dont either
+1. Beds no longer explode in the nether / end and respawn anchors don't either
 2. End crystals can only be placed on bedrock
 7. replace all loot armor with enchantment books
 
@@ -30,5 +30,6 @@
 6. A written book with all the changes
 
 ## Server Plugin TODO:
+
 8. change end world daily
 

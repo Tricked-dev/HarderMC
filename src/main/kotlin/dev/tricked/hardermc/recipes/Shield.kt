@@ -2,7 +2,7 @@
  * Copyright (c) Tricked-dev 2023.
  */
 
-package dev.tricked.hardermc.features
+package dev.tricked.hardermc.recipes
 
 import dev.tricked.hardermc.utilities.CustomRecipe
 import org.bukkit.Material
