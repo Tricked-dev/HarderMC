@@ -29,7 +29,7 @@ public class HarderMC : JavaPlugin(), Listener {
         val customRecipeManager = CustomRecipeManager(this)
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(MendingNerf(this), this)
-
+        pluginManager.registerEvents(NoExplodieBed(this), this)
         Bukkit.getPluginManager().registerEvents(this, this)
         Bukkit.getPluginManager().registerEvents(EndEventHandler(this), this)
         Bukkit.getPluginManager().registerEvents(NetherEventHandler(this), this)
