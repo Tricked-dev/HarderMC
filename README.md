@@ -26,6 +26,9 @@
 
 1. Limit some good enchantments to a lower level
 4. Make explosions less op
-5. Change shulkers to have 1 row of items instead of 3
+5. Change shulkers to have 1 row of items instead of 3 (blocked)
 6. A written book with all the changes
+
+## Server Plugin TODO:
 8. change end world daily
+

@@ -6,16 +6,17 @@ import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-open class BaseArmorPieceRecipe: CustomRecipe {
-    val sRecipe: ShapedRecipe
+open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomRecipe() {
+    init {
+        recipe = ShapedRecipe(key, ItemStack(item))
+        this.setKey(key)
+    }
+
+    private val sRecipe: ShapedRecipe
         get() {
             return recipe as ShapedRecipe
         }
 
-    constructor(key:NamespacedKey, item:Material): super() {
-        recipe = ShapedRecipe(key, ItemStack(item))
-        setKey(key);
-    }
     protected fun boots(): BaseArmorPieceRecipe {
         sRecipe.shape("   ", "CHC", "L L")
         return this;

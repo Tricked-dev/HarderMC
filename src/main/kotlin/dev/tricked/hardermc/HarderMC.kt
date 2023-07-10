@@ -1,10 +1,11 @@
 package dev.tricked.hardermc
 
 import dev.tricked.hardermc.end.EndEventHandler
-import dev.tricked.hardermc.end.EndRecipeHandler
 import dev.tricked.hardermc.features.*
 import dev.tricked.hardermc.nether.NetherEventHandler
 import dev.tricked.hardermc.overworld.OverworldEventHandler
+import dev.tricked.hardermc.recipes.EnchantmentTableRecipe
+import dev.tricked.hardermc.recipes.EyeOfEnderRecipe
 import dev.tricked.hardermc.recipes.chainmail.ChainmailBoots
 import dev.tricked.hardermc.recipes.chainmail.ChainmailChestplate
 import dev.tricked.hardermc.recipes.chainmail.ChainmailHelmet
@@ -31,6 +32,7 @@ public class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(MendingNerf(this), this)
         pluginManager.registerEvents(NoExplodieBed(this), this)
         pluginManager.registerEvents(ChestLootToBooks(this), this)
+        pluginManager.registerEvents(SmallerShulkers(this), this)
 
         Bukkit.getPluginManager().registerEvents(this, this)
         Bukkit.getPluginManager().registerEvents(EndEventHandler(this), this)
@@ -41,7 +43,9 @@ public class HarderMC : JavaPlugin(), Listener {
 
         Bukkit.getPluginManager().registerEvents(customRecipeManager, this)
         customRecipeManager.addCustomRecipes(
-            HarderShieldRecipe(),
+            ShieldRecipe(),
+            EyeOfEnderRecipe(),
+            EnchantmentTableRecipe()
         )
         customRecipeManager.addCustomRecipes(
             ChainmailHelmet(),
@@ -61,8 +65,6 @@ public class HarderMC : JavaPlugin(), Listener {
             DiamondLeggings(),
             DiamondBoots()
         )
-        EndRecipeHandler(this).ModifyRecipes()
-        HarderRecipes(this).AddRecipes()
     }
 
     @EventHandler
