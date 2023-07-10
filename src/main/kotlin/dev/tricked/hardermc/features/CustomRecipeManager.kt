@@ -32,7 +32,7 @@ class CustomRecipeManager(plugin: HarderMC) : BaseTool(plugin), Listener {
     fun onPlayerPickupItem(event: PlayerPickupItemEvent) {
         val type = event.item.itemStack.type
         for (recipe in customRecipes) {
-            if (recipe.triggerIngredients!!.contains(type)) {
+            if (recipe.triggerIngredients.contains(type)) {
                 event.player.discoverRecipe(recipe.key!!)
             }
         }

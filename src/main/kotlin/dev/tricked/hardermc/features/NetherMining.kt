@@ -6,15 +6,12 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.World
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.Action
 import org.bukkit.event.block.BlockBreakEvent
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.meta.Damageable
 import org.bukkit.inventory.meta.ItemMeta
 import kotlin.math.pow
@@ -29,7 +26,7 @@ class NetherMining(mc: HarderMC) : BaseTool(mc), Listener {
         val item = event.player.inventory.itemInMainHand
         if (!item.type.toString().contains("PICKAXE")) return
         if (item.itemMeta is Damageable) {
-            val damageable = item.itemMeta as Damageable;
+            val damageable = item.itemMeta as Damageable
 
             val currentDamage = damageable.damage
             var increase = 5

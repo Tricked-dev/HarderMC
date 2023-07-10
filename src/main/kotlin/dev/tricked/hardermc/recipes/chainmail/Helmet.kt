@@ -8,7 +8,7 @@ import dev.tricked.hardermc.recipes.BaseArmorPieceRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 
-class ChainmailHelmet() : BaseArmorPieceRecipe(
+class ChainmailHelmet : BaseArmorPieceRecipe(
     NamespacedKey.minecraft("chainmail_helmet"),
     Material.CHAINMAIL_HELMET
 ) {

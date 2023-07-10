@@ -17,7 +17,7 @@ class ChestLootToBooks(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onLootGenerate(event: LootGenerateEvent) {
         val loot = event.loot
-        val lootCopy = ArrayList(loot);
+        val lootCopy = ArrayList(loot)
         for (item in lootCopy) {
             val type = item.type.toString()
             if (type.contains("LEGGING") || type.contains("BOOTS") || type.contains("CHESTPLATE") || type.contains("HELMET")) {

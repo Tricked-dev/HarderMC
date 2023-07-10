@@ -8,7 +8,6 @@ import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemDamageEvent
 import org.bukkit.inventory.meta.Damageable

@@ -6,13 +6,7 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
-import org.bukkit.Bukkit
-import org.bukkit.Bukkit.getServer
-import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.inventory.InventoryOpenEvent
-import org.bukkit.event.inventory.InventoryType
-import org.bukkit.inventory.Inventory
 
 // TODO: does not work try to find alternative.
 class SmallerShulkers(mc: HarderMC) : BaseTool(mc), Listener {

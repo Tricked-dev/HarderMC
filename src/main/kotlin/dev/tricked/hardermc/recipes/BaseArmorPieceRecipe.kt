@@ -9,7 +9,6 @@ import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
-import java.util.ArrayList
 
 open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomRecipe() {
     init {
@@ -24,22 +23,22 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
 
     protected fun boots(): BaseArmorPieceRecipe {
         sRecipe.shape("   ", "CHC", "L L")
-        return this;
+        return this
     }
 
     protected fun helmet(): BaseArmorPieceRecipe {
         sRecipe.shape("LLL", "CHC", "   ")
-        return this;
+        return this
     }
 
     protected fun chestplate(): BaseArmorPieceRecipe {
         sRecipe.shape("LHL", "CLC", "LLL")
-        return this;
+        return this
     }
 
     protected fun leggings(): BaseArmorPieceRecipe {
         sRecipe.shape("CLC", "LHL", "L L")
-        return this;
+        return this
     }
 
     protected fun setMaterials(l: Material, c: Material, h: Material): BaseArmorPieceRecipe {
@@ -47,7 +46,7 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
         sRecipe.setIngredient('C', c)
         sRecipe.setIngredient('H', h)
 
-        triggerIngredients = arrayOf(l, c, h).toList();
+        triggerIngredients = arrayOf(l, c, h).toList()
         return this
     }
 }

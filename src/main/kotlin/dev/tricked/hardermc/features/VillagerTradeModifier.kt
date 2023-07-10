@@ -6,7 +6,6 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
-import org.bukkit.Effect
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Villager
@@ -19,8 +18,6 @@ import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.MerchantRecipe
 import org.bukkit.inventory.meta.Damageable
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import java.util.*
 
 
@@ -39,7 +36,7 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
         // Modify existing armor trades
         for (recipe in villager.recipes) {
             getLog().info("Checking recipe: $recipe discount " + recipe.priceMultiplier)
-            getLog().info("HI: " + recipe.priceMultiplier);
+            getLog().info("HI: " + recipe.priceMultiplier)
             if (recipe.priceMultiplier > 0.2f) {
                 recipe.priceMultiplier = 0.2f
             }
@@ -99,14 +96,14 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
 
             if (resultItem.type == Material.ENDER_PEARL) {
                 getLog().info("Editing ender pearl trades")
-                recipe.ingredients[0].amount = 32;
+                recipe.ingredients[0].amount = 32
                 if (recipe.maxUses > 2) {
                     recipe.maxUses = 2
                 }
             }
             if (recipe.ingredients[0]?.type == Material.STICK) {
                 getLog().info("Editing stick trades")
-                recipe.ingredients[0].amount = 64;
+                recipe.ingredients[0].amount = 64
             }
         }
         villager.recipes = recipes
@@ -119,10 +116,10 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
         if (event.transformReason == EntityTransformEvent.TransformReason.CURED) {
             if (event.transformedEntity.type == EntityType.VILLAGER) {
                 // a 1 in 7 chance for curing to fail
-                if (random.nextInt(7) != 3) return;
-                event.isCancelled = true;
-                var v = event.entity as ZombieVillager;
-                v.health = 0.0;
+                if (random.nextInt(7) != 3) return
+                event.isCancelled = true
+                var v = event.entity as ZombieVillager
+                v.health = 0.0
             }
         }
     }

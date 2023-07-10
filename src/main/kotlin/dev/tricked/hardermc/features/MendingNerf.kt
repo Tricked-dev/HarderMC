@@ -9,7 +9,7 @@ import dev.tricked.hardermc.utilities.BaseTool
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemMendEvent
-import java.util.Random
+import java.util.*
 
 
 class MendingNerf(mc: HarderMC) : BaseTool(mc), Listener {
@@ -26,7 +26,7 @@ class MendingNerf(mc: HarderMC) : BaseTool(mc), Listener {
             getLog().info("Repair AmountNew: $modifiedRepairAmount")
             event.repairAmount = modifiedRepairAmount
         } else if (random.nextInt(10) != 5) {
-            event.repairAmount = 0;
+            event.repairAmount = 0
         }
     }
 }

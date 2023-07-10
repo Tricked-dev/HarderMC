@@ -12,7 +12,7 @@ import org.bukkit.inventory.ShapelessRecipe
 
 class EyeOfEnderRecipe : CustomRecipe() {
     init {
-        val key = NamespacedKey.minecraft("ender_eye");
+        val key = NamespacedKey.minecraft("ender_eye")
 
         val recipe = ShapelessRecipe(key, ItemStack(Material.ENDER_EYE, 1))
             .addIngredient(4, Material.BLAZE_POWDER)

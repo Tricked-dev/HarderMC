@@ -29,7 +29,7 @@ class NoExplodieBed(mc: HarderMC) : BaseTool(mc), Listener {
         if (event.player.world.environment != Environment.NETHER && block.type == Material.RESPAWN_ANCHOR) {
             event.isCancelled = true
         }
-        if (block.getType() != Material.BEDROCK) {
+        if (block.type != Material.BEDROCK) {
             val itemInHand = event.player.inventory.itemInMainHand
             if (itemInHand.type == Material.END_CRYSTAL) {
                 event.isCancelled = true
