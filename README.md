@@ -31,6 +31,12 @@ A plugin that makes various things *harder*
 5. Change shulkers to have 1 row of items instead of 3 (blocked)
 6. A written book with all the changes
 
+## Server Plugin features
+
+1. Custom spawn logic
+    - Players spawn 1k blocks away from spawn in 8 directions
+    - Players get another random 128 blocks around that point
+
 ## Server Plugin TODO:
 
 8. change end world daily

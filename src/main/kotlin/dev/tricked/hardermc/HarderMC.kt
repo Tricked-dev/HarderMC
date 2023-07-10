@@ -20,8 +20,10 @@ import dev.tricked.hardermc.recipes.ironarmor.IronBoots
 import dev.tricked.hardermc.recipes.ironarmor.IronChestplate
 import dev.tricked.hardermc.recipes.ironarmor.IronHelmet
 import dev.tricked.hardermc.recipes.ironarmor.IronLeggings
+import dev.tricked.hardermc.server.ServerMain
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
+import org.bukkit.Server
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
@@ -44,10 +46,9 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(NetherMining(this), this)
         pluginManager.registerEvents(MoreElytraDamage(this), this)
         pluginManager.registerEvents(PiglinEnderPearlRemover(this), this)
+        pluginManager.registerEvents(customRecipeManager, this)
+        pluginManager.registerEvents(this, this)
 
-        Bukkit.getPluginManager().registerEvents(this, this)
-
-        Bukkit.getPluginManager().registerEvents(customRecipeManager, this)
         customRecipeManager.addCustomRecipes(
             ShieldRecipe(),
             EyeOfEnderRecipe(),
@@ -71,6 +72,7 @@ class HarderMC : JavaPlugin(), Listener {
             DiamondLeggings(),
             DiamondBoots()
         )
+        ServerMain(this)
     }
 
     @EventHandler
