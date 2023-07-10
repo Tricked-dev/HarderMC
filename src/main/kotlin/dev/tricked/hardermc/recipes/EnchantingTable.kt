@@ -1,6 +1,6 @@
 package dev.tricked.hardermc.recipes
 
-import dev.tricked.hardermc.tools.CustomRecipe
+import dev.tricked.hardermc.utilities.CustomRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack

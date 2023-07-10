@@ -1,9 +1,6 @@
 package dev.tricked.hardermc
 
-import dev.tricked.hardermc.end.EndEventHandler
 import dev.tricked.hardermc.features.*
-import dev.tricked.hardermc.nether.NetherEventHandler
-import dev.tricked.hardermc.overworld.OverworldEventHandler
 import dev.tricked.hardermc.recipes.EnchantmentTableRecipe
 import dev.tricked.hardermc.recipes.EyeOfEnderRecipe
 import dev.tricked.hardermc.recipes.chainmail.ChainmailBoots
@@ -15,7 +12,7 @@ import dev.tricked.hardermc.recipes.ironarmor.IronBoots
 import dev.tricked.hardermc.recipes.ironarmor.IronChestplate
 import dev.tricked.hardermc.recipes.ironarmor.IronHelmet
 import dev.tricked.hardermc.recipes.ironarmor.IronLeggings
-import dev.tricked.hardermc.tools.CustomRecipeManager
+import dev.tricked.hardermc.features.CustomRecipeManager
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
@@ -33,13 +30,15 @@ public class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(NoExplodieBed(this), this)
         pluginManager.registerEvents(ChestLootToBooks(this), this)
         pluginManager.registerEvents(SmallerShulkers(this), this)
+        pluginManager.registerEvents(NoTotem(this), this)
+        pluginManager.registerEvents(PortalCloser(this), this)
+        pluginManager.registerEvents(PVPRegenCooldown(this), this)
+        pluginManager.registerEvents(VillagerTradeModifier(this), this)
+        pluginManager.registerEvents(NetherMining(this), this)
+        pluginManager.registerEvents(MoreElytraDamage(this), this)
+        pluginManager.registerEvents(PiglinEnderPearlRemover(this), this)
 
         Bukkit.getPluginManager().registerEvents(this, this)
-        Bukkit.getPluginManager().registerEvents(EndEventHandler(this), this)
-        Bukkit.getPluginManager().registerEvents(NetherEventHandler(this), this)
-        Bukkit.getPluginManager().registerEvents(OverworldEventHandler(this), this)
-        Bukkit.getPluginManager().registerEvents(PVPRegenCooldown(this), this)
-        Bukkit.getPluginManager().registerEvents(VillagerTradeModifier(this), this)
 
         Bukkit.getPluginManager().registerEvents(customRecipeManager, this)
         customRecipeManager.addCustomRecipes(

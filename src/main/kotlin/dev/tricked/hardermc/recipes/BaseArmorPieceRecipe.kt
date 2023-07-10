@@ -1,15 +1,16 @@
 package dev.tricked.hardermc.recipes
 
-import dev.tricked.hardermc.tools.CustomRecipe
+import dev.tricked.hardermc.utilities.CustomRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
+import java.util.ArrayList
 
 open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomRecipe() {
     init {
         recipe = ShapedRecipe(key, ItemStack(item))
-        this.setKey(key)
+        this.setRecipeKey(key)
     }
 
     private val sRecipe: ShapedRecipe
@@ -38,10 +39,7 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
         sRecipe.setIngredient('C', c)
         sRecipe.setIngredient('H', h)
 
-        this.triggerIngredients = ArrayList();
-        this.triggerIngredients.add(l);
-        this.triggerIngredients.add(c);
-        this.triggerIngredients.add(h);
+        triggerIngredients = arrayOf(l, c, h).toList();
         return this
     }
 }
