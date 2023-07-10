@@ -103,7 +103,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 
 sourceSets {
     getByName("main") {
-        java.srcDirs("src/main/java")
         kotlin.srcDirs("src/main/kotlin")
     }
 }

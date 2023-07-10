@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc
 
 import dev.tricked.hardermc.features.*

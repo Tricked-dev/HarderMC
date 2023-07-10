@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -10,7 +14,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 
 
-class NoExplodieBed(mc:HarderMC): BaseTool(mc), Listener {
+class NoExplodieBed(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
 
@@ -22,7 +26,7 @@ class NoExplodieBed(mc:HarderMC): BaseTool(mc), Listener {
         if (event.player.world.environment != Environment.NORMAL && block.type.toString().endsWith("BED")) {
             event.isCancelled = true
         }
-        if (event.player.world.environment != Environment.NETHER &&  block.type == Material.RESPAWN_ANCHOR) {
+        if (event.player.world.environment != Environment.NETHER && block.type == Material.RESPAWN_ANCHOR) {
             event.isCancelled = true
         }
         if (block.getType() != Material.BEDROCK) {

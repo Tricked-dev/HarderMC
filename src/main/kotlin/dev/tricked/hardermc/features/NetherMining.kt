@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -15,7 +19,7 @@ import org.bukkit.inventory.meta.Damageable
 import org.bukkit.inventory.meta.ItemMeta
 import kotlin.math.pow
 
-class NetherMining(mc: HarderMC): BaseTool(mc), Listener {
+class NetherMining(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onBlockBreak(event: BlockBreakEvent) {
         val player = event.player

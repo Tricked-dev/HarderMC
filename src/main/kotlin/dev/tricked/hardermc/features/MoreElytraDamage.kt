@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -9,7 +13,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemDamageEvent
 import org.bukkit.inventory.meta.Damageable
 
-class MoreElytraDamage(mc: HarderMC): BaseTool(mc), Listener {
+class MoreElytraDamage(mc: HarderMC) : BaseTool(mc), Listener {
 
     @EventHandler
     fun onPlayerItemDamage(event: PlayerItemDamageEvent) {

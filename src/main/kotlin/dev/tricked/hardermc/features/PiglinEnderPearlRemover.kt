@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -9,7 +13,7 @@ import org.bukkit.event.entity.PiglinBarterEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-class PiglinEnderPearlRemover(mc: HarderMC): BaseTool(mc), Listener {
+class PiglinEnderPearlRemover(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onPiglinBarter(event: PiglinBarterEvent) {
         val outcome = event.outcome
@@ -19,7 +23,7 @@ class PiglinEnderPearlRemover(mc: HarderMC): BaseTool(mc), Listener {
                 val rand = Random()
                 outcome.clear()
                 outcome.add(
-                    ItemStack(Material.BONE_MEAL,2 + rand.nextInt(5))
+                    ItemStack(Material.BONE_MEAL, 2 + rand.nextInt(5))
                 )
             }
         }

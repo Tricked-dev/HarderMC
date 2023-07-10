@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.recipes
 
 import dev.tricked.hardermc.utilities.CustomRecipe
@@ -6,7 +10,7 @@ import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapelessRecipe
 
-class EyeOfEnderRecipe: CustomRecipe() {
+class EyeOfEnderRecipe : CustomRecipe() {
     init {
         val key = NamespacedKey.minecraft("ender_eye");
 

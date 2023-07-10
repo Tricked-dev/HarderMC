@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.recipes.diamondarmor
 
 import dev.tricked.hardermc.recipes.BaseArmorPieceRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 
-class DiamondChestplate: BaseArmorPieceRecipe(
+class DiamondChestplate : BaseArmorPieceRecipe(
     NamespacedKey.minecraft("diamond_chestplate"),
     Material.DIAMOND_CHESTPLATE
 ) {

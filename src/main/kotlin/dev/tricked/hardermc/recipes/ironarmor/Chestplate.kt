@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.recipes.ironarmor
 
 import dev.tricked.hardermc.recipes.BaseArmorPieceRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 
-class IronChestplate: BaseArmorPieceRecipe(
+class IronChestplate : BaseArmorPieceRecipe(
     NamespacedKey.minecraft("iron_chestplate"),
     Material.IRON_CHESTPLATE
 ) {

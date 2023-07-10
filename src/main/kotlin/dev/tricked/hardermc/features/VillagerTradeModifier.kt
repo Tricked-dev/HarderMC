@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -20,7 +24,7 @@ import org.bukkit.potion.PotionEffectType
 import java.util.*
 
 
-class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
+class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler(priority = HIGHEST)
     fun onPlayerInteract(event: PlayerInteractEntityEvent) {
         if (event.isCancelled) return
@@ -82,13 +86,13 @@ class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
                 recipe.priceMultiplier = 0f
                 var ingredients = recipe.ingredients.toMutableList()
 
-                ingredients[1] = ItemStack(Material.SCUTE,2)
+                ingredients[1] = ItemStack(Material.SCUTE, 2)
                 recipe.ingredients = ingredients
                 recipe.setIgnoreDiscounts(true)
             }
-            if (resultItem.type== Material.EMERALD) {
+            if (resultItem.type == Material.EMERALD) {
                 getLog().info("Editing emerald trades")
-                if(recipe.maxUses > 4) {
+                if (recipe.maxUses > 4) {
                     recipe.maxUses = 4
                 }
             }
@@ -96,7 +100,7 @@ class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
             if (resultItem.type == Material.ENDER_PEARL) {
                 getLog().info("Editing ender pearl trades")
                 recipe.ingredients[0].amount = 32;
-                if(recipe.maxUses > 2) {
+                if (recipe.maxUses > 2) {
                     recipe.maxUses = 2
                 }
             }
@@ -107,6 +111,7 @@ class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
         }
         villager.recipes = recipes
     }
+
     private val random: Random = Random()
 
     @EventHandler

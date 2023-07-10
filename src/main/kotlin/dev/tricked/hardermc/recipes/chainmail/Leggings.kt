@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.recipes.chainmail
 
 import dev.tricked.hardermc.recipes.BaseArmorPieceRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 
-class ChainmailLeggings: BaseArmorPieceRecipe(
+class ChainmailLeggings : BaseArmorPieceRecipe(
     NamespacedKey.minecraft("chainmail_leggings"),
     Material.CHAINMAIL_LEGGINGS
 ) {

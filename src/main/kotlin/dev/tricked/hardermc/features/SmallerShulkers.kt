@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -11,7 +15,7 @@ import org.bukkit.event.inventory.InventoryType
 import org.bukkit.inventory.Inventory
 
 // TODO: does not work try to find alternative.
-class SmallerShulkers(mc: HarderMC): BaseTool(mc), Listener {
+class SmallerShulkers(mc: HarderMC) : BaseTool(mc), Listener {
 //    @EventHandler
 //    fun onInventoryOpedn(event: InventoryOpenEvent) {
 //        val inventory = event.inventory

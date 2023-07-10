@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -11,8 +15,9 @@ import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason
 import org.bukkit.scheduler.BukkitRunnable
 
 
-class PVPRegenCooldown(mc: HarderMC): BaseTool(mc), Listener {
-    private val pvpCooldown  = HashMap<Player, Long>()
+class PVPRegenCooldown(mc: HarderMC) : BaseTool(mc), Listener {
+    private val pvpCooldown = HashMap<Player, Long>()
+
     @EventHandler
     fun onPlayerDamage(event: EntityDamageByEntityEvent) {
         if (event.damager is Player && event.entity is Player) {

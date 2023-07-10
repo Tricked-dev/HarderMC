@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -10,7 +14,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-class NoTotem(mc: HarderMC): BaseTool(mc), Listener {
+class NoTotem(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onEntityDeath(event: EntityDeathEvent) {
         if (event.entityType == EntityType.EVOKER) {

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.recipes
 
 import dev.tricked.hardermc.utilities.CustomRecipe
@@ -22,19 +26,23 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
         sRecipe.shape("   ", "CHC", "L L")
         return this;
     }
+
     protected fun helmet(): BaseArmorPieceRecipe {
         sRecipe.shape("LLL", "CHC", "   ")
         return this;
     }
+
     protected fun chestplate(): BaseArmorPieceRecipe {
         sRecipe.shape("LHL", "CLC", "LLL")
         return this;
     }
-    protected fun leggings() : BaseArmorPieceRecipe{
+
+    protected fun leggings(): BaseArmorPieceRecipe {
         sRecipe.shape("CLC", "LHL", "L L")
         return this;
     }
-    protected fun setMaterials(l: Material, c:Material, h:Material): BaseArmorPieceRecipe {
+
+    protected fun setMaterials(l: Material, c: Material, h: Material): BaseArmorPieceRecipe {
         sRecipe.setIngredient('L', l)
         sRecipe.setIngredient('C', c)
         sRecipe.setIngredient('H', h)

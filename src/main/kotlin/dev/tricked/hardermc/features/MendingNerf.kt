@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -8,8 +12,9 @@ import org.bukkit.event.player.PlayerItemMendEvent
 import java.util.Random
 
 
-class MendingNerf(mc:HarderMC): BaseTool(mc), Listener {
+class MendingNerf(mc: HarderMC) : BaseTool(mc), Listener {
     val random = Random()
+
     @EventHandler
     fun onItemMend(event: PlayerItemMendEvent) {
         val repairAmount = event.repairAmount

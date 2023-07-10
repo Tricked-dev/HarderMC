@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Tricked-dev 2023.
+ */
+
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
@@ -9,7 +13,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 
-class PortalCloser (mc: HarderMC): BaseTool(mc), Listener {
+class PortalCloser(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
         val clickedBlock = event.clickedBlock ?: return
@@ -17,7 +21,8 @@ class PortalCloser (mc: HarderMC): BaseTool(mc), Listener {
         if (clickedBlock.type == Material.END_PORTAL_FRAME) {
             //end portal gets created after it is clicked
             Bukkit.getScheduler().runTaskLater(plugin, Runnable {
-                val radius = 4 // Radius of 4 blocks around the clicked block this should find any end portal & frame blocks
+                val radius =
+                    4 // Radius of 4 blocks around the clicked block this should find any end portal & frame blocks
                 val portalsBlocks = HashSet<Block>()
                 val portalFrameBlocks = HashSet<Block>()
                 for (xOffset in -radius..radius) {
