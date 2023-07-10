@@ -9,7 +9,7 @@
 5. Mining below 30 in the nether increases durability usage
 6. Enchantment table now requires crying obsidian and 2 ghast tears
 7. Elytra now uses 40x more durability
-8. armor progression
+8. Armor progression
 9. mending is now 10x less effective
 10. Shield recipe requires 2 scutes now
 11. 2 minute pvp cooldown

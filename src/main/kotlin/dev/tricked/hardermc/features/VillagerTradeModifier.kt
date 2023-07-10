@@ -92,6 +92,18 @@ class VillagerTradeModifier(mc:HarderMC) : BaseTool(mc), Listener {
                     recipe.maxUses = 4
                 }
             }
+
+            if (resultItem.type == Material.ENDER_PEARL) {
+                getLog().info("Editing ender pearl trades")
+                recipe.ingredients[0].amount = 32;
+                if(recipe.maxUses > 2) {
+                    recipe.maxUses = 2
+                }
+            }
+            if (recipe.ingredients[0]?.type == Material.STICK) {
+                getLog().info("Editing stick trades")
+                recipe.ingredients[0].amount = 64;
+            }
         }
         villager.recipes = recipes
     }
