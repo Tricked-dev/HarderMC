@@ -53,7 +53,7 @@ tasks.shadowJar {
     }
 }
 
-wrapper {
+tasks.wrapper {
     gradleVersion = "8.2.1"
 }
 
