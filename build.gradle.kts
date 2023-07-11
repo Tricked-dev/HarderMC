@@ -5,9 +5,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    java
+    id("java")
     id("xyz.jpenilla.run-paper") version "2.1.0"
-    kotlin("jvm") version "1.9.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("wrapper")
 }
@@ -33,15 +33,36 @@ repositories {
     }
 }
 
-tasks.create<Jar>("sourcesJar") {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+
+tasks {
+    withType<JavaCompile> {
+        if (JavaVersion.current() < JavaVersion.VERSION_17) {
+            options.compilerArgs = listOf("-Xlint:-processing")
+        }
+    }
+
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+    }
+
+    create<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        from(sourceSets["main"].allSource)
+    }
+
+
+    withType<Copy>().named("processResources") {
+        val props = mapOf("version" to version)
+        inputs.properties(props)
+        filteringCharset = "UTF-8"
+        filesMatching("plugin.yml") {
+            expand(props)
+        }
+    }
 }
 
-tasks.create<Jar>("javadocJar") {
-    dependsOn.add(tasks.getByName("javadoc"))
-    archiveClassifier.set("javadoc")
-    from(tasks.getByName("javadoc"))
+tasks.wrapper {
+    gradleVersion = "8.2.1"
 }
 
 tasks.shadowJar {
@@ -53,13 +74,8 @@ tasks.shadowJar {
     }
 }
 
-tasks.wrapper {
-    gradleVersion = "8.2.1"
-}
-
 artifacts {
     archives(tasks.getByName("sourcesJar"))
-    archives(tasks.getByName("javadocJar"))
     archives(tasks.shadowJar)
 }
 
@@ -83,6 +99,7 @@ dependencies {
 
 
 val targetJavaVersion = 17
+
 java {
     val javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -92,41 +109,12 @@ java {
     }
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
-        options.release.set(targetJavaVersion)
-    }
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    // Existing configurations...
-    doFirst {
-        options.compilerArgs = listOf("-Xlint:-processing")
-    }
-}
-
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "17"
-}
-
 sourceSets {
     getByName("main") {
         kotlin.srcDirs("src/main/kotlin")
     }
 }
 
-tasks.withType<Copy>().named("processResources") {
-    val props = mapOf("version" to version)
-    inputs.properties(props)
-    filteringCharset = "UTF-8"
-    filesMatching("plugin.yml") {
-        expand(props)
-    }
-}
-
-
-tasks {
-    runServer {
-        minecraftVersion("1.20.1")
-    }
+tasks.runServer {
+    minecraftVersion("1.20.1")
 }

@@ -10,6 +10,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Bukkit.getServer
 import org.bukkit.Location
 import org.bukkit.World
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
@@ -60,6 +61,16 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
         plugin.logger.info("Spawn points have been generated.")
     }
 
+    // retries a teleport once after 60ms
+    private fun safeTeleport(player: Player, location: Location) {
+        val r = player.teleport(location)
+        if (!r) {
+            Bukkit.getScheduler().runTaskLater(plugin, Runnable {
+                player.teleport(location)
+            }, 3)
+        }
+    }
+
     @EventHandler
     fun onPlayerRespawn(event: PlayerRespawnEvent) {
         if (event.isBedSpawn || event.isAnchorSpawn) {
@@ -69,7 +80,9 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
 
         val player = event.player
         val spawnLocation: Location = getRandomSpawnLocation()
-        player.teleport(spawnLocation)
+        getLog().info("Teleporting player...")
+        safeTeleport(player, spawnLocation)
+        getLog().info("Teleporting complete")
     }
 
     @EventHandler
@@ -77,7 +90,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
         val player = event.player
         if (!player.hasPlayedBefore()) {
             val spawnLocation: Location = getRandomSpawnLocation()
-            player.teleport(spawnLocation)
+            safeTeleport(player, spawnLocation)
         }
     }
 
