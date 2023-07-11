@@ -79,3 +79,6 @@ fabric.properties
 run/
 build/
 .gradle/
+gradle/
+gradlew
+gradlew.bat

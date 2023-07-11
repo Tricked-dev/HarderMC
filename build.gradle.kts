@@ -9,6 +9,7 @@ plugins {
     id("xyz.jpenilla.run-paper") version "2.1.0"
     kotlin("jvm") version "1.9.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("wrapper")
 }
 
 object Versions {
@@ -50,6 +51,10 @@ tasks.shadowJar {
             "Implementation-Version" to project.version
         )
     }
+}
+
+wrapper {
+    gradleVersion = "8.2.1"
 }
 
 artifacts {
