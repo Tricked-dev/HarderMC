@@ -46,6 +46,7 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(NetherMining(this), this)
         pluginManager.registerEvents(MoreElytraDamage(this), this)
         pluginManager.registerEvents(PiglinEnderPearlRemover(this), this)
+        pluginManager.registerEvents(MoreHorseLeather(this), this)
         pluginManager.registerEvents(customRecipeManager, this)
         pluginManager.registerEvents(this, this)
 
@@ -79,4 +80,8 @@ class HarderMC : JavaPlugin(), Listener {
     fun onPlayerJoin(event: PlayerJoinEvent) {
         event.player.sendMessage(Component.text("Hello, " + event.player.name + "!"))
     }
+}
+
+fun main(args: Array<String>) {
+    println("You are supposed to put the jar in the plugins folder dummy!")
 }

@@ -8,6 +8,7 @@ import dev.tricked.hardermc.utilities.CustomRecipe
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.RecipeChoice
 import org.bukkit.inventory.ShapedRecipe
 
 open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomRecipe() {
@@ -47,6 +48,14 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
         sRecipe.setIngredient('H', h)
 
         triggerIngredients = arrayOf(l, c, h).toList()
+        return this
+    }
+
+    protected fun setMaterials(l: RecipeChoice.MaterialChoice, c: Material, h: Material): BaseArmorPieceRecipe {
+        setMaterials(
+            l.choices[0], c, h
+        )
+        sRecipe.setIngredient('L', l)
         return this
     }
 }

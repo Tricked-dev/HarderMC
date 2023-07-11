@@ -29,8 +29,8 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
     }
 
     private val SPAWN_RADIUS = 128
-    private val SPAWN_DISTANCE = 1000
-    private val NUM_SPAWN_POINTS = 8
+    private val SPAWN_DISTANCE = 800
+    private val NUM_SPAWN_POINTS = 32
     private val random: Random = Random()
 
     private fun generateSpawnPoints() {
@@ -66,7 +66,9 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
         val r = player.teleport(location)
         if (!r) {
             Bukkit.getScheduler().runTaskLater(plugin, Runnable {
-                player.teleport(location)
+                player.teleportAsync(location).thenAccept {
+                    getLog().info("Async Done?")
+                }
             }, 3)
         }
     }
@@ -75,7 +77,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
     fun onPlayerRespawn(event: PlayerRespawnEvent) {
         if (event.isBedSpawn || event.isAnchorSpawn) {
             // Player has a bed, so use the default respawn location
-            return;
+            return
         }
 
         val player = event.player

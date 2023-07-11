@@ -15,9 +15,9 @@ class EyeOfEnderRecipe : CustomRecipe() {
         val key = NamespacedKey.minecraft("ender_eye")
 
         val recipe = ShapelessRecipe(key, ItemStack(Material.ENDER_EYE, 1))
-            .addIngredient(4, Material.BLAZE_POWDER)
+            .addIngredient(Material.BLAZE_POWDER)
             .addIngredient(Material.ENDER_PEARL)
-            .addIngredient(4, Material.BLAZE_POWDER)
+            .addIngredient(Material.BLAZE_POWDER)
 
         init(
             key,

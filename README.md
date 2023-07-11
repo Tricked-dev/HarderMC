@@ -4,7 +4,7 @@ A plugin that makes various things *harder*
 
 ## Changes
 
-1. eye of ender requires 8 blaze powder
+1. eye of ender requires 2 blaze powder
 2. End portals close in 10 minutes
 3. Ender pearls are removed from piglin barter
 4. Evokers don't drop totems of undying making them unobtainable
@@ -26,7 +26,7 @@ A plugin that makes various things *harder*
 
 ## TODO
 
-1. Limit some good enchantments to a lower level
+1. Limit some good enchantments to a lower level (on drop / inventory add)
 4. Make explosions less op
 5. Change shulkers to have 1 row of items instead of 3 (blocked)
 6. A written book with all the changes
@@ -34,12 +34,13 @@ A plugin that makes various things *harder*
 ## Server Plugin features
 
 1. Custom spawn logic
-    - Players spawn 1k blocks away from spawn in 8 directions
+    - Players spawn 800 blocks away from spawn in 32 directions
     - Players get another random 128 blocks around that point
 
 ## Server Plugin TODO:
 
 8. change end world daily
+9. turn players into zombies when leaving for up to 1h
 
 ## License
 
