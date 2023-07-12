@@ -7,8 +7,8 @@ package dev.tricked.hardermc.utilities
 import dev.tricked.hardermc.HarderMC
 import org.bukkit.event.Listener
 import java.util.logging.Logger
-import kotlin.reflect.KProperty
 import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 @Retention(AnnotationRetention.RUNTIME)
 annotation class Name(val value: String)
@@ -23,10 +23,10 @@ class ConfigProperty<T>(private val plugin: HarderMC, private val configPrefix: 
 
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        var value = plugin.config.get("$configPrefix.${property.name}");
+        var value = plugin.config.get("$configPrefix.${property.name}")
         if (value == null) {
             setValue(thisRef, property, defaultValue)
-            value = defaultValue;
+            value = defaultValue
         }
         return value as T
     }

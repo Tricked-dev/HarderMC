@@ -5,7 +5,9 @@
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
-import dev.tricked.hardermc.utilities.*
+import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.world.LootGenerateEvent
@@ -18,7 +20,7 @@ class ChestLootToBooks(mc: HarderMC) : BaseTool(mc) {
     fun onLootGenerate(event: LootGenerateEvent) {
         if (!enabled) return
         if (event.loot.isEmpty()) return
-        
+
         val loot = event.loot
         val lootCopy = ArrayList(loot)
         for (item in lootCopy) {

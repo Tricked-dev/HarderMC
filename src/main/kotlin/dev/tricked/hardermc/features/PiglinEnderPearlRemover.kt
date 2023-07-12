@@ -10,7 +10,6 @@ import dev.tricked.hardermc.utilities.Description
 import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.PiglinBarterEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*

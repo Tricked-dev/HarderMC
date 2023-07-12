@@ -15,7 +15,6 @@ import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import java.util.*
@@ -46,10 +45,10 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
 
     private fun generateSpawnPoints() {
         // Clear previous spawn points
-        var c = false;
+        var c = false
         for (i in 0 until numSpawnPoints) {
             if (!plugin.config.contains(generateKey(i))) {
-                c = true;
+                c = true
                 break
             }
         }

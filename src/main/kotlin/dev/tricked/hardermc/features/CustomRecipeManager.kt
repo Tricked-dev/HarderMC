@@ -13,9 +13,7 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityPickupItemEvent
-import org.bukkit.event.player.PlayerPickupItemEvent
 
 @Name("Custom Recipe Manager")
 @Description("Enables the custom recipes and the obtaining of the recipes")
@@ -38,8 +36,8 @@ class CustomRecipeManager(plugin: HarderMC) : BaseTool(plugin) {
 
     @EventHandler(priority = EventPriority.MONITOR)
     fun onPlayerPickupItem(event: EntityPickupItemEvent) {
-        if (!enabled) return;
-        
+        if (!enabled) return
+
         val type = event.item.itemStack.type
         for (recipe in customRecipes) {
             if (recipe.triggerIngredients.contains(type)) {

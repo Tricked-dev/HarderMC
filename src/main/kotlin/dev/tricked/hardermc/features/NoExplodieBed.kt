@@ -12,7 +12,6 @@ import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.World.Environment
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 
@@ -29,21 +28,21 @@ class NoExplodieBed(mc: HarderMC) : BaseTool(mc) {
 
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
-        if (!enabled) return;
+        if (!enabled) return
 
         // Check if the player right-click on a block
         if (event.action != Action.RIGHT_CLICK_BLOCK) return
 
         val block = event.clickedBlock ?: return
-        val environment = event.player.world.environment;
+        val environment = event.player.world.environment
         if (environment != Environment.NORMAL && block.type.toString().endsWith("BED")) {
-            if (!disableNetherBed && environment == Environment.NETHER) return;
-            if (!disableEndBed && environment == Environment.THE_END) return;
+            if (!disableNetherBed && environment == Environment.NETHER) return
+            if (!disableEndBed && environment == Environment.THE_END) return
             event.isCancelled = true
         }
         if (event.player.world.environment != Environment.NETHER && block.type == Material.RESPAWN_ANCHOR) {
-            if (!disableOverworldAnchor && environment == Environment.NORMAL) return;
-            if (!disableEndAnchor && environment == Environment.THE_END) return;
+            if (!disableOverworldAnchor && environment == Environment.NORMAL) return
+            if (!disableEndAnchor && environment == Environment.THE_END) return
             event.isCancelled = true
         }
         if (block.type != Material.BEDROCK && !enableObsidianEndCrystal) {

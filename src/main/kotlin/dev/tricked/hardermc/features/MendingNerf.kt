@@ -24,7 +24,7 @@ class MendingNerf(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler
     fun onItemMend(event: PlayerItemMendEvent) {
         if (!enabled) return
-        
+
         val repairAmount = event.repairAmount
         // 10% of the repair amount is given if the repair amount is more than 10
         // otherwise a 10% chance for the repair to continue
