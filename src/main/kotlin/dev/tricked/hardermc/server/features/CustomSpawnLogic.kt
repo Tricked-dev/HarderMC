@@ -6,6 +6,9 @@ package dev.tricked.hardermc.server.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.ConfigProperty
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Bukkit
 import org.bukkit.Bukkit.getServer
 import org.bukkit.Location
@@ -19,8 +22,9 @@ import java.util.*
 import kotlin.math.cos
 import kotlin.math.sin
 
-
-class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
+@Name("Custom Spawn Logic")
+@Description("Custom spawn logic that makes spawn less bloated and spreads everyone out")
+class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
     init {
         getLog().info("Custom spawn logic has been enabled.")
         Bukkit.getScheduler().runTaskLater(plugin, Runnable {
@@ -28,14 +32,17 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
         }, 50)
     }
 
-    private val SPAWN_RADIUS = 128
-    private val SPAWN_DISTANCE = 800
-    private val NUM_SPAWN_POINTS = 32
+
+    private var spawnRadius: Int by ConfigProperty(plugin, configPrefix, 128)
+    private var spawnDistance: Int by ConfigProperty(plugin, configPrefix, 800)
+    private var numSpawnPoints: Int by ConfigProperty(plugin, configPrefix, 32)
+
+
     private val random: Random = Random()
 
     private fun generateSpawnPoints() {
         // Clear previous spawn points
-        for (i in 0 until NUM_SPAWN_POINTS) {
+        for (i in 0 until numSpawnPoints) {
             val spawnKey = "spawn$i"
             if (plugin.getConfig().contains(spawnKey)) {
                 plugin.getConfig().set(spawnKey, null)
@@ -44,11 +51,11 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
 
 
         // Generate new spawn points
-        for (i in 0 until NUM_SPAWN_POINTS) {
-            val angle = i * (360.0 / NUM_SPAWN_POINTS)
+        for (i in 0 until numSpawnPoints) {
+            val angle = i * (360.0 / numSpawnPoints)
             val radians = Math.toRadians(angle)
-            val x = SPAWN_DISTANCE * cos(radians)
-            val z = SPAWN_DISTANCE * sin(radians)
+            val x = spawnDistance * cos(radians)
+            val z = spawnDistance * sin(radians)
 
             // Store spawn point in the config
             val spawnKey = "spawn$i"
@@ -75,6 +82,8 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
 
     @EventHandler
     fun onPlayerRespawn(event: PlayerRespawnEvent) {
+        if (!enabled) return;
+
         if (event.isBedSpawn || event.isAnchorSpawn) {
             // Player has a bed, so use the default respawn location
             return
@@ -89,6 +98,8 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
 
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
+        if (!enabled) return;
+
         val player = event.player
         if (!player.hasPlayedBefore()) {
             val spawnLocation: Location = getRandomSpawnLocation()
@@ -97,7 +108,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
     }
 
     private fun getRandomSpawnLocation(): Location {
-        val spawnIndex: Int = random.nextInt(NUM_SPAWN_POINTS)
+        val spawnIndex: Int = random.nextInt(numSpawnPoints)
         val spawnKey = "spawn$spawnIndex"
         if (plugin.getConfig().contains(spawnKey)) {
             val world: World = getServer().getWorlds().get(0)
@@ -107,7 +118,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc), Listener {
             val spawnLocation = Location(world, x, 0.0, z)
 
             // Add random offset within the spawn radius
-            val offset: Double = random.nextDouble() * SPAWN_RADIUS
+            val offset: Double = random.nextDouble() * spawnRadius
             val angle: Double = random.nextDouble() * 360.0
             val radians = Math.toRadians(angle)
             val offsetX = offset * Math.cos(radians)
