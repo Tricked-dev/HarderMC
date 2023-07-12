@@ -6,6 +6,8 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
@@ -14,9 +16,13 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-class NoTotem(mc: HarderMC) : BaseTool(mc), Listener {
+@Name("No Totems")
+@Description("Evokers no longer drop totems making totems unobtainable")
+class NoTotem(mc: HarderMC) : BaseTool(mc) {
     @EventHandler
     fun onEntityDeath(event: EntityDeathEvent) {
+        if (!enabled) return
+
         if (event.entityType == EntityType.EVOKER) {
             val drops = event.drops
             val random = Random()

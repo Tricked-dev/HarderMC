@@ -40,6 +40,7 @@ A plugin that makes various things *harder*
 ## Server Plugin TODO:
 
 8. change end world daily
+9. vanish
 9. turn players into zombies when leaving for up to 1h
 
 ## License

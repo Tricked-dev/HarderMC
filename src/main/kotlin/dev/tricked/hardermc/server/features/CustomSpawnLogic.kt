@@ -40,13 +40,21 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
 
     private val random: Random = Random()
 
+    private fun generateKey(i: Int): String {
+        return "$configPrefix.spawns.${i + 1}"
+    }
+
     private fun generateSpawnPoints() {
         // Clear previous spawn points
+        var c = false;
         for (i in 0 until numSpawnPoints) {
-            val spawnKey = "spawn$i"
-            if (plugin.getConfig().contains(spawnKey)) {
-                plugin.getConfig().set(spawnKey, null)
+            if (!plugin.config.contains(generateKey(i))) {
+                c = true;
+                break
             }
+        }
+        if (!c) {
+            return
         }
 
 
@@ -58,7 +66,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
             val z = spawnDistance * sin(radians)
 
             // Store spawn point in the config
-            val spawnKey = "spawn$i"
+            val spawnKey = generateKey(i)
             plugin.config.set("$spawnKey.x", x.toInt())
             plugin.config.set("$spawnKey.z", z.toInt())
             getLog().info("Spawn point $i has been generated.")
@@ -82,7 +90,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
 
     @EventHandler
     fun onPlayerRespawn(event: PlayerRespawnEvent) {
-        if (!enabled) return;
+        if (!enabled) return
 
         if (event.isBedSpawn || event.isAnchorSpawn) {
             // Player has a bed, so use the default respawn location
@@ -98,7 +106,7 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
 
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
-        if (!enabled) return;
+        if (!enabled) return
 
         val player = event.player
         if (!player.hasPlayedBefore()) {
@@ -109,11 +117,11 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
 
     private fun getRandomSpawnLocation(): Location {
         val spawnIndex: Int = random.nextInt(numSpawnPoints)
-        val spawnKey = "spawn$spawnIndex"
-        if (plugin.getConfig().contains(spawnKey)) {
-            val world: World = getServer().getWorlds().get(0)
-            val x: Double = plugin.getConfig().getDouble("$spawnKey.x")
-            val z: Double = plugin.getConfig().getDouble("$spawnKey.z")
+        val spawnKey = generateKey(spawnIndex)
+        if (plugin.config.contains(spawnKey)) {
+            val world: World = getServer().worlds[0]
+            val x: Double = plugin.config.getDouble("$spawnKey.x")
+            val z: Double = plugin.config.getDouble("$spawnKey.z")
 
             val spawnLocation = Location(world, x, 0.0, z)
 
@@ -132,6 +140,6 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
         }
 
         // Fallback to world spawn if the configured spawn point is missing
-        return getServer().getWorlds().get(0).getSpawnLocation()
+        return getServer().worlds[0].spawnLocation
     }
 }

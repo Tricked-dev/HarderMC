@@ -6,6 +6,9 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.ConfigProperty
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -13,9 +16,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason
 
-
+@Name("PVP Regen Cooldown")
+@Description("Getting hit or hitting another player will now make you unable to regen health from eating food and potions")
 class PVPRegenCooldown(mc: HarderMC) : BaseTool(mc), Listener {
     private val pvpCooldown = HashMap<Player, Long>()
+    private var cooldownSeconds: Int by ConfigProperty(plugin, configPrefix, 120)
 
     @EventHandler
     fun onPlayerDamage(event: EntityDamageByEntityEvent) {
@@ -24,8 +29,8 @@ class PVPRegenCooldown(mc: HarderMC) : BaseTool(mc), Listener {
             val victim = event.entity as Player
 
             // Disable regeneration for the attacker for 2 minutes
-            disableRegeneration(attacker, 120)
-            disableRegeneration(victim, 120)
+            disableRegeneration(attacker)
+            disableRegeneration(victim)
         }
     }
 
@@ -50,7 +55,7 @@ class PVPRegenCooldown(mc: HarderMC) : BaseTool(mc), Listener {
         }
     }
 
-    private fun disableRegeneration(player: Player, seconds: Int) {
-        pvpCooldown[player] = System.currentTimeMillis() + seconds * 1000
+    private fun disableRegeneration(player: Player) {
+        pvpCooldown[player] = System.currentTimeMillis() + cooldownSeconds * 1000
     }
 }

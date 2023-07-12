@@ -5,17 +5,20 @@
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
-import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.*
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.world.LootGenerateEvent
 import org.bukkit.inventory.ItemStack
 
-
-class ChestLootToBooks(mc: HarderMC) : BaseTool(mc), Listener {
+@Name("Chest Loot To Books")
+@Description("Turns all armor pieces into books with their respective enchantments or removes the item from the chest if its not enchanted")
+class ChestLootToBooks(mc: HarderMC) : BaseTool(mc) {
     @EventHandler
     fun onLootGenerate(event: LootGenerateEvent) {
+        if (!enabled) return
+        if (event.loot.isEmpty()) return
+        
         val loot = event.loot
         val lootCopy = ArrayList(loot)
         for (item in lootCopy) {

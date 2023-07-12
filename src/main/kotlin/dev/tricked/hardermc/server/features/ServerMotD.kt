@@ -18,7 +18,6 @@ import java.util.*
 
 @Name("Server MotD")
 @Description("Server MOTD feature")
-@Unstable
 class ServerMotD(mc: HarderMC) : BaseTool(mc), Listener {
     private val random = Random()
 

@@ -7,6 +7,7 @@ package dev.tricked.hardermc
 import dev.tricked.hardermc.features.*
 import dev.tricked.hardermc.recipes.EnchantmentTableRecipe
 import dev.tricked.hardermc.recipes.EyeOfEnderRecipe
+import dev.tricked.hardermc.recipes.HelpBookRecipe
 import dev.tricked.hardermc.recipes.ShieldRecipe
 import dev.tricked.hardermc.recipes.chainmail.ChainmailBoots
 import dev.tricked.hardermc.recipes.chainmail.ChainmailChestplate
@@ -53,7 +54,8 @@ class HarderMC : JavaPlugin(), Listener {
         customRecipeManager.addCustomRecipes(
             ShieldRecipe(),
             EyeOfEnderRecipe(),
-            EnchantmentTableRecipe()
+            EnchantmentTableRecipe(),
+            HelpBookRecipe()
         )
         customRecipeManager.addCustomRecipes(
             ChainmailHelmet(),

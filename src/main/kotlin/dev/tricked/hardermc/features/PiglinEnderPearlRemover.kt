@@ -6,6 +6,8 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -13,9 +15,13 @@ import org.bukkit.event.entity.PiglinBarterEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-class PiglinEnderPearlRemover(mc: HarderMC) : BaseTool(mc), Listener {
+@Name("Piglin Ender Pearl Remover")
+@Description("Piglins have no interest in giving you ender pearls for your devalued gold")
+class PiglinEnderPearlRemover(mc: HarderMC) : BaseTool(mc) {
     @EventHandler
     fun onPiglinBarter(event: PiglinBarterEvent) {
+        if (!enabled) return
+
         val outcome = event.outcome
         // remove ender pearls form the loot table
         for (item in outcome.toList()) {

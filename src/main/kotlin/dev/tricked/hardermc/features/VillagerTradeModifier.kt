@@ -6,6 +6,8 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Villager
@@ -20,11 +22,13 @@ import org.bukkit.inventory.MerchantRecipe
 import org.bukkit.inventory.meta.Damageable
 import java.util.*
 
-
+@Name("Villager Trade Modifier")
+@Description("Villagers dont sell armor anymore and tools are pretty damaged, trades that give emeralds are limited to 4 uses and shields require 1 scute")
 class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
     @EventHandler(priority = HIGHEST)
     fun onPlayerInteract(event: PlayerInteractEntityEvent) {
         if (event.isCancelled) return
+        if (!enabled) return
         val entity = event.rightClicked
         if (entity.type != EntityType.VILLAGER) return
 
@@ -83,7 +87,7 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
                 recipe.priceMultiplier = 0f
                 val ingredients = recipe.ingredients.toMutableList()
 
-                ingredients[1] = ItemStack(Material.SCUTE, 2)
+                ingredients[1] = ItemStack(Material.SCUTE, 1)
                 recipe.ingredients = ingredients
                 recipe.setIgnoreDiscounts(true)
             }
@@ -113,6 +117,7 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
 
     @EventHandler
     fun onEntityTransform(event: EntityTransformEvent) {
+        if (!enabled) return
         if (event.transformReason == EntityTransformEvent.TransformReason.CURED) {
             if (event.transformedEntity.type == EntityType.VILLAGER) {
                 // a 1 in 7 chance for curing to fail

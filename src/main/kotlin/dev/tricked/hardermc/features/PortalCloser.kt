@@ -6,6 +6,9 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
+import dev.tricked.hardermc.utilities.ConfigProperty
+import dev.tricked.hardermc.utilities.Description
+import dev.tricked.hardermc.utilities.Name
 import org.bukkit.*
 import org.bukkit.block.Block
 import org.bukkit.block.data.type.EndPortalFrame
@@ -13,9 +16,15 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 
+@Name("Portal closer")
+@Description("The portal has gone unstable it cant keep up being open for more than 10 minutes")
 class PortalCloser(mc: HarderMC) : BaseTool(mc), Listener {
+    private var delayTicks: Int by ConfigProperty(plugin, configPrefix, 10 * 60 * 20)
+
+
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
+        if (!enabled) return
         val clickedBlock = event.clickedBlock ?: return
         //TODO make this work after restarts
         if (clickedBlock.type == Material.END_PORTAL_FRAME) {
@@ -90,7 +99,7 @@ class PortalCloser(mc: HarderMC) : BaseTool(mc), Listener {
                     } else {
                         getLog().info("No adjacent end portals found.")
                     }
-                }, (10 * 60 * 20).toLong())
+                }, delayTicks.toLong())
             }, 2) // Delay of 2 ticks (20ms per tick) - adjust this value as needed
         }
     }

@@ -10,23 +10,25 @@ import java.util.logging.Logger
 import kotlin.reflect.KProperty
 import kotlin.properties.ReadWriteProperty
 
+@Retention(AnnotationRetention.RUNTIME)
 annotation class Name(val value: String)
+
+@Retention(AnnotationRetention.RUNTIME)
 annotation class Description(val value: String)
 annotation class Unstable
 
-@Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.CLASS)
-annotation class ToolDecorator(
-    val name: String,
-    val description: String,
-    val unstable: Boolean = false
-)
 
 class ConfigProperty<T>(private val plugin: HarderMC, private val configPrefix: String, private val defaultValue: T) :
     ReadWriteProperty<Any?, T> {
 
+
     override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        return plugin.config.get("$configPrefix.${property.name}", defaultValue) as T
+        var value = plugin.config.get("$configPrefix.${property.name}");
+        if (value == null) {
+            setValue(thisRef, property, defaultValue)
+            value = defaultValue;
+        }
+        return value as T
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
@@ -40,6 +42,7 @@ abstract class BaseTool(var plugin: HarderMC) : Listener {
     var enabled: Boolean by ConfigProperty(plugin, configPrefix, true)
 
     init {
+        // I'm sorry
         instances.add(this)
     }
 
@@ -49,20 +52,14 @@ abstract class BaseTool(var plugin: HarderMC) : Listener {
 
     val name: String
         get() {
-            val decoratorAnnotation = this::class.annotations.find { it is ToolDecorator } as? ToolDecorator
-            return decoratorAnnotation?.name ?: ""
+            val nameAnnotation = this::class.java.getAnnotation(Name::class.java)
+            return nameAnnotation?.value ?: ""
         }
 
     val description: String
         get() {
-            val decoratorAnnotation = this::class.annotations.find { it is ToolDecorator } as? ToolDecorator
-            return decoratorAnnotation?.description ?: ""
-        }
-
-    val unstable: Boolean
-        get() {
-            val decoratorAnnotation = this::class.annotations.find { it is ToolDecorator } as? ToolDecorator
-            return decoratorAnnotation?.unstable ?: false
+            val nameAnnotation = this::class.java.getAnnotation(Description::class.java)
+            return nameAnnotation?.value ?: ""
         }
 
 
