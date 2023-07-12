@@ -23,6 +23,7 @@ class ServerMotD(mc: HarderMC) : BaseTool(mc), Listener {
     private val random = Random()
 
     private var serverName: String by ConfigProperty(plugin, configPrefix, "HarderMC")
+    private var maxPlayers: Int by ConfigProperty(plugin, configPrefix, 0)
 
     @EventHandler
     fun onServerListPing(event: ServerListPingEvent) {
@@ -49,6 +50,6 @@ class ServerMotD(mc: HarderMC) : BaseTool(mc), Listener {
         event.motd(
             motd
         )
-        event.maxPlayers = 0
+        event.maxPlayers = maxPlayers
     }
 }
