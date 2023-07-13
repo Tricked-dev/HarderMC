@@ -32,8 +32,10 @@ import java.util.logging.Logger
 
 class HarderMC : JavaPlugin(), Listener {
     var log: Logger = logger
+    var enchantLimiter: LimitEnchantments? = null
     override fun onEnable() {
         val customRecipeManager = CustomRecipeManager(this)
+        enchantLimiter = LimitEnchantments(this)
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(MendingNerf(this), this)
         pluginManager.registerEvents(NoExplodieBed(this), this)
@@ -47,6 +49,7 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(MoreElytraDamage(this), this)
         pluginManager.registerEvents(PiglinEnderPearlRemover(this), this)
         pluginManager.registerEvents(MoreHorseLeather(this), this)
+        pluginManager.registerEvents(enchantLimiter!!, this)
         pluginManager.registerEvents(customRecipeManager, this)
         pluginManager.registerEvents(this, this)
 

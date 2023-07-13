@@ -22,7 +22,7 @@ class HelpBookRecipe : CustomRecipe() {
         val book = ItemStack(Material.WRITTEN_BOOK)
         val bookMeta = book.itemMeta as BookMeta
 
-        bookMeta.title = "Hi"
+        bookMeta.title = "The changes of HarderMC"
         bookMeta.author = "HarderMC"
 
         val pageResults = ArrayList<ArrayList<BaseTool>>()

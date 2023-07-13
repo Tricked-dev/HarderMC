@@ -26,12 +26,13 @@ class ChestLootToBooks(mc: HarderMC) : BaseTool(mc) {
         for (item in lootCopy) {
             val type = item.type.toString()
             if (type.contains("LEGGING") || type.contains("BOOTS") || type.contains("CHESTPLATE") || type.contains("HELMET")) {
-                val itemMeta = item.itemMeta
+                val itemMeta = plugin.enchantLimiter?.limitEnchantment(item)?.itemMeta ?: item.itemMeta
 
                 // Check if the item has enchantments
                 if (itemMeta.hasEnchants()) {
                     // Create an enchanted book with the same enchantments
                     val enchantedBook = ItemStack(Material.ENCHANTED_BOOK)
+
                     val bookMeta = enchantedBook.itemMeta
 
                     // Copy the enchantments from the original item to the enchanted book
