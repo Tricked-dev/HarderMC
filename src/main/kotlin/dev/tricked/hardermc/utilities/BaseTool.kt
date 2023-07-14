@@ -34,6 +34,7 @@ class ConfigProperty<T>(private val plugin: HarderMC, private val configPrefix: 
     }
 }
 
+@Suppress("LeakingThis")
 abstract class BaseTool(var plugin: HarderMC) : Listener {
     protected val configPrefix = "feature.${this::class.simpleName}"
 

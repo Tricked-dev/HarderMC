@@ -10,7 +10,7 @@ import dev.tricked.hardermc.server.features.ServerMotD
 import org.bukkit.Bukkit
 
 /// This class implements stuff for the hardermc server that do not make mc harder but just helps making the server work
-class ServerMain(private val plugin: HarderMC) {
+class ServerMain(plugin: HarderMC) {
     init {
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(CustomSpawnLogic(plugin), plugin)

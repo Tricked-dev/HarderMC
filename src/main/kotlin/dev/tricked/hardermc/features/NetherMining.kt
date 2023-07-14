@@ -9,15 +9,10 @@ import dev.tricked.hardermc.utilities.BaseTool
 import dev.tricked.hardermc.utilities.ConfigProperty
 import dev.tricked.hardermc.utilities.Description
 import dev.tricked.hardermc.utilities.Name
-import org.bukkit.Material
 import org.bukkit.World
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.EventHandler
-import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.player.PlayerItemDamageEvent
 import org.bukkit.inventory.meta.Damageable
-import org.bukkit.inventory.meta.ItemMeta
-import kotlin.math.pow
 
 @Name("Nether Mining")
 @Description("Makes pickaxes take a lot more damage in the nether when below 30")

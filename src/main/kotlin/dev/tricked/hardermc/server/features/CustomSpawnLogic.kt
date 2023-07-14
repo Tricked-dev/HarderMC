@@ -127,8 +127,8 @@ class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
             val offset: Double = random.nextDouble() * spawnRadius
             val angle: Double = random.nextDouble() * 360.0
             val radians = Math.toRadians(angle)
-            val offsetX = offset * Math.cos(radians)
-            val offsetZ = offset * Math.sin(radians)
+            val offsetX = offset * cos(radians)
+            val offsetZ = offset * sin(radians)
             // Apply offset to the spawn location
             spawnLocation.add(offsetX, 0.0, offsetZ)
             spawnLocation.y =

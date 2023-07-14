@@ -51,6 +51,7 @@ open class BaseArmorPieceRecipe(key: NamespacedKey, item: Material) : CustomReci
         return this
     }
 
+    @Suppress("SameParameterValue")
     protected fun setMaterials(l: RecipeChoice.MaterialChoice, c: Material, h: Material): BaseArmorPieceRecipe {
         setMaterials(
             l.choices[0], c, h

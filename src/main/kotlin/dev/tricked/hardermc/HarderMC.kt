@@ -30,13 +30,11 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Logger
-import kotlin.reflect.KMutableProperty1
-import kotlin.reflect.KProperty
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
 
 class HarderMC : JavaPlugin(), Listener {
-    var log: Logger = logger
+    private var log: Logger = logger
     var enchantLimiter: LimitEnchantments? = null
     override fun onEnable() {
         val customRecipeManager = CustomRecipeManager(this)
@@ -86,7 +84,7 @@ class HarderMC : JavaPlugin(), Listener {
             DiamondBoots()
         )
         ServerMain(this)
-        BaseTool.instances.forEach() { instance ->
+        BaseTool.instances.forEach { instance ->
             log.info("${instance.javaClass.simpleName} enabled: ${instance.enabled}")
 
             val fields = ArrayList<String>()
@@ -114,6 +112,6 @@ class HarderMC : JavaPlugin(), Listener {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     println("You are supposed to put the jar in the plugins folder dummy!")
 }

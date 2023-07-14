@@ -3,7 +3,6 @@
  */
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.gradle.process.ExecSpec
 import java.io.ByteArrayOutputStream
 
 plugins {

@@ -6,7 +6,6 @@ package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
 import dev.tricked.hardermc.utilities.BaseTool
-import dev.tricked.hardermc.utilities.ConfigProperty
 import dev.tricked.hardermc.utilities.Description
 import dev.tricked.hardermc.utilities.Name
 import org.bukkit.enchantments.Enchantment
@@ -42,7 +41,7 @@ class LimitEnchantments(mc: HarderMC) : BaseTool(mc) {
         return stack
     }
 
-    fun limitEnchantment(stack: ItemMeta): ItemMeta {
+    private fun limitEnchantment(stack: ItemMeta): ItemMeta {
         for (enchantment in stack.enchants.keys) {
             if (limits.containsKey(enchantment)) {
                 if (stack.enchants[enchantment]!! > limits[enchantment]!!) {
@@ -91,7 +90,7 @@ class LimitEnchantments(mc: HarderMC) : BaseTool(mc) {
     fun onInventoryDrag(event: InventoryDragEvent) {
         if (!enabled) return
 
-        event.newItems.forEach() {
+        event.newItems.forEach {
             if (it.value.itemMeta.enchants.isNotEmpty()) {
                 it.value.itemMeta = limitEnchantment(it.value.itemMeta)
             }
