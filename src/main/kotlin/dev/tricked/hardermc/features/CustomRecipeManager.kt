@@ -5,10 +5,7 @@
 package dev.tricked.hardermc.features
 
 import dev.tricked.hardermc.HarderMC
-import dev.tricked.hardermc.utilities.BaseTool
-import dev.tricked.hardermc.utilities.CustomRecipe
-import dev.tricked.hardermc.utilities.Description
-import dev.tricked.hardermc.utilities.Name
+import dev.tricked.hardermc.utilities.*
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -19,6 +16,13 @@ import org.bukkit.event.entity.EntityPickupItemEvent
 @Description("Enables the custom recipes and the obtaining of the recipes")
 class CustomRecipeManager(plugin: HarderMC) : BaseTool(plugin) {
     private val customRecipes: MutableList<CustomRecipe> = ArrayList()
+
+    val customArmorEnabled: Boolean by ConfigProperty(plugin, configPrefix, true)
+    val customEnchantmentTableEnabled: Boolean by ConfigProperty(plugin, configPrefix, true)
+    val customShieldEnabled: Boolean by ConfigProperty(plugin, configPrefix, true)
+    val helpBookEnabled: Boolean by ConfigProperty(plugin, configPrefix, true)
+    val customEyeOfEnderEnabled: Boolean by ConfigProperty(plugin, configPrefix, true)
+
     private fun addCustomRecipe(data: CustomRecipe) {
         Bukkit.removeRecipe(data.key!!)
         Bukkit.getServer().addRecipe(data.recipe)

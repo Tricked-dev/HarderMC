@@ -3,6 +3,8 @@
  */
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.process.ExecSpec
+import java.io.ByteArrayOutputStream
 
 plugins {
     id("java")
@@ -20,8 +22,14 @@ object Versions {
     const val datetime = "0.3.2"
 }
 
+val output = ByteArrayOutputStream()
+project.exec {
+    commandLine("git", "describe", "--tags", "--abbrev=0")
+    standardOutput = output
+}
+
 group = "dev.tricked"
-version = "0.1.0"
+version = output.toString().trim()
 
 repositories {
     mavenCentral()

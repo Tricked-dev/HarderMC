@@ -15,8 +15,6 @@ annotation class Name(val value: String)
 
 @Retention(AnnotationRetention.RUNTIME)
 annotation class Description(val value: String)
-annotation class Unstable
-
 
 class ConfigProperty<T>(private val plugin: HarderMC, private val configPrefix: String, private val defaultValue: T) :
     ReadWriteProperty<Any?, T> {

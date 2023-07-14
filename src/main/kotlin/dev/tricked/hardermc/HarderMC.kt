@@ -22,6 +22,7 @@ import dev.tricked.hardermc.recipes.ironarmor.IronChestplate
 import dev.tricked.hardermc.recipes.ironarmor.IronHelmet
 import dev.tricked.hardermc.recipes.ironarmor.IronLeggings
 import dev.tricked.hardermc.server.ServerMain
+import dev.tricked.hardermc.utilities.BaseTool
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
@@ -29,6 +30,10 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Logger
+import kotlin.reflect.KMutableProperty1
+import kotlin.reflect.KProperty
+import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 class HarderMC : JavaPlugin(), Listener {
     var log: Logger = logger
@@ -53,31 +58,54 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(customRecipeManager, this)
         pluginManager.registerEvents(this, this)
 
+
         customRecipeManager.addCustomRecipes(
-            ShieldRecipe(),
-            EyeOfEnderRecipe(),
-            EnchantmentTableRecipe(),
-            HelpBookRecipe()
+            *listOfNotNull(
+                if (customRecipeManager.customShieldEnabled) ShieldRecipe() else null,
+                if (customRecipeManager.customEyeOfEnderEnabled) EyeOfEnderRecipe() else null,
+                if (customRecipeManager.customEnchantmentTableEnabled) EnchantmentTableRecipe() else null,
+                if (customRecipeManager.helpBookEnabled) HelpBookRecipe() else null
+            ).toTypedArray()
         )
-        customRecipeManager.addCustomRecipes(
+        if (customRecipeManager.customArmorEnabled) customRecipeManager.addCustomRecipes(
             ChainmailHelmet(),
             ChainmailChestplate(),
             ChainmailLeggings(),
             ChainmailBoots()
         )
-        customRecipeManager.addCustomRecipes(
+        if (customRecipeManager.customArmorEnabled) customRecipeManager.addCustomRecipes(
             IronHelmet(),
             IronChestplate(),
             IronLeggings(),
             IronBoots(),
         )
-        customRecipeManager.addCustomRecipes(
+        if (customRecipeManager.customArmorEnabled) customRecipeManager.addCustomRecipes(
             DiamondHelmet(),
             DiamondChestplate(),
             DiamondLeggings(),
             DiamondBoots()
         )
         ServerMain(this)
+        BaseTool.instances.forEach() { instance ->
+            log.info("${instance.javaClass.simpleName} enabled: ${instance.enabled}")
+
+            val fields = ArrayList<String>()
+
+            instance.javaClass.declaredFields.forEach { field ->
+                field.isAccessible = true
+                if (field.name.contains("\$delegate")) {
+                    fields.add(field.name.replace("\$delegate", ""))
+                }
+            }
+
+            instance::class.memberProperties.forEach { prop ->
+                if (fields.any { that -> prop.name.contains(that) }) {
+                    prop.isAccessible = true
+                    //forces it to set the default value
+                    prop.getter.call(instance)
+                }
+            }
+        }
     }
 
     @EventHandler

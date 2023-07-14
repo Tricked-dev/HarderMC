@@ -25,7 +25,6 @@ import kotlin.math.sin
 @Description("Custom spawn logic that makes spawn less bloated and spreads everyone out")
 class CustomSpawnLogic(mc: HarderMC) : BaseTool(mc) {
     init {
-        getLog().info("Custom spawn logic has been enabled.")
         Bukkit.getScheduler().runTaskLater(plugin, Runnable {
             generateSpawnPoints()
         }, 50)

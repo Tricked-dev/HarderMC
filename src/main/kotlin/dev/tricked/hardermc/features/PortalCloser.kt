@@ -21,7 +21,6 @@ import org.bukkit.event.player.PlayerInteractEvent
 class PortalCloser(mc: HarderMC) : BaseTool(mc), Listener {
     private var delayTicks: Int by ConfigProperty(plugin, configPrefix, 10 * 60 * 20)
 
-
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
         if (!enabled) return

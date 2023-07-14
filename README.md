@@ -45,6 +45,69 @@ A plugin that makes various things *harder*
 9. vanish
 9. turn players into zombies when leaving for up to 1h
 
+## Config
+
+The config will automatically be generated on startup this is a snapshot of what it could look like
+
+```yml
+feature:
+    CustomRecipeManager:
+        customShieldEnabled: true
+        customEyeOfEnderEnabled: true
+        customEnchantmentTableEnabled: true
+        helpBookEnabled: true
+        enabled: true
+        customArmorEnabled: true
+    LimitEnchantments:
+        enabled: true
+    MendingNerf:
+        enabled: true
+        factor: 10.0
+    NoExplodieBed:
+        enabled: true
+        disableEndAnchor: true
+        disableEndBed: true
+        disableNetherBed: true
+        disableOverworldAnchor: true
+        enableObsidianEndCrystal: false
+    ChestLootToBooks:
+        enabled: true
+    SmallerShulkers:
+        enabled: true
+    NoTotem:
+        enabled: true
+    PortalCloser:
+        enabled: true
+        delayTicks: 12000
+    PVPRegenCooldown:
+        enabled: true
+        cooldownSeconds: 120
+    VillagerTradeModifier:
+        enabled: true
+    NetherMining:
+        enabled: true
+        depth: 30
+        factor: 5
+    MoreElytraDamage:
+        enabled: true
+        factor: 40
+    PiglinEnderPearlRemover:
+        enabled: true
+    MoreHorseLeather:
+        enabled: true
+        extraLeatherCount: 4
+        extraLeatherCountRandom: 4
+    CustomSpawnLogic:
+        enabled: true
+        numSpawnPoints: 32
+        spawnDistance: 800
+        spawnRadius: 128
+    ServerMotD:
+        enabled: true
+        maxPlayers: 0
+        serverName: HarderMC
+```
+
 ## License
 
 [License](./LICENSE)
