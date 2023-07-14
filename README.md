@@ -20,23 +20,24 @@ A plugin that makes various things *harder*
     - 1 in 7 chance for curing to fail
     - tools from villagers are damaged
     - limit emerald trades to 4 usages
-1. Beds no longer explode in the nether / end and respawn anchors don't either
-2. End crystals can only be placed on bedrock
-7. replace all loot armor with enchantment books
-1. Limit some good enchantments to a lower level (on drop / inventory add)
-6. A written book with all the changes
+13. Beds no longer explode in the nether / end and respawn anchors don't either
+14. End crystals can only be placed on bedrock
+15. replace all loot armor with enchantment books
+16. Limit some good enchantments to a lower level
+17. A written book with all the changes
 
 ## TODO
 
-4. Make explosions less op
-5. Change shulkers to have 1 row of items instead of 3 (blocked)
-7. respawn end crystals
+1. Make explosions less op
+2. Change shulkers to have 1 row of items instead of 3 (blocked)
+3. respawn end crystals after a couple of minutes if dragon fight is still going
 
 ## Server Plugin features
 
 1. Custom spawn logic
     - Players spawn 800 blocks away from spawn in 32 directions
     - Players get another random 128 blocks around that point
+2. Custom server icon / MOTD
 
 ## Server Plugin TODO:
 

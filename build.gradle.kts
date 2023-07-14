@@ -66,6 +66,10 @@ tasks.wrapper {
 }
 
 tasks.shadowJar {
+    from(".") {
+        include("LICENSE")
+        into("")
+    }
     manifest {
         attributes(
             "Implementation-Title" to project.name,
