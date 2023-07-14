@@ -34,10 +34,9 @@ class ServerMotD(mc: HarderMC) : BaseTool(mc), Listener {
         val colorChoices = listOf(NamedTextColor.RED, NamedTextColor.GREEN, NamedTextColor.BLUE, NamedTextColor.AQUA)
         val randomColor = colorChoices[random.nextInt(colorChoices.size)]
 
-        val iconId = random.nextInt(36) + 1
+        val iconId = random.nextInt(34) + 1
 
         val icon = {}.javaClass.getResourceAsStream("/icons/$iconId.png")
-
 
         val image = ImageIO.read(icon)
         val serverIcon = Bukkit.loadServerIcon(image)

@@ -23,13 +23,14 @@ A plugin that makes various things *harder*
 1. Beds no longer explode in the nether / end and respawn anchors don't either
 2. End crystals can only be placed on bedrock
 7. replace all loot armor with enchantment books
+1. Limit some good enchantments to a lower level (on drop / inventory add)
+6. A written book with all the changes
 
 ## TODO
 
-1. Limit some good enchantments to a lower level (on drop / inventory add)
 4. Make explosions less op
 5. Change shulkers to have 1 row of items instead of 3 (blocked)
-6. A written book with all the changes
+7. respawn end crystals
 
 ## Server Plugin features
 

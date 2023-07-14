@@ -28,7 +28,7 @@ class HelpBookRecipe : CustomRecipe() {
         val pageResults = ArrayList<ArrayList<BaseTool>>()
         var currentPage = ArrayList<BaseTool>()
         var count = 0
-        val PER_PAGE = 200
+        val PER_PAGE = 170
         for (tool in BaseTool.instances) {
             val total = tool.description.length + tool.name.length
             if (total == 0) continue
