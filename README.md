@@ -26,11 +26,14 @@ A plugin that makes various things *harder*
 16. Limit some good enchantments to a lower level
 17. A written book with all the changes
 
+## Download
+
+You can download HarderMC on [ko-fi](https://ko-fi.com/s/f8b544c04d)
+
 ## TODO
 
-1. Make explosions less op
-2. Change shulkers to have 1 row of items instead of 3 (blocked)
-3. respawn end crystals after a couple of minutes if dragon fight is still going
+1. Change shulkers to have 1 row of items instead of 3 (blocked)
+2. respawn end crystals after a couple of minutes if dragon fight is still going
 
 ## Server Plugin features
 
@@ -41,9 +44,9 @@ A plugin that makes various things *harder*
 
 ## Server Plugin TODO:
 
-8. change end world daily
-9. vanish
-9. turn players into zombies when leaving for up to 1h
+1. change end world daily
+2. vanish
+3. turn players into zombies when leaving for up to 1h
 
 ## Config
 

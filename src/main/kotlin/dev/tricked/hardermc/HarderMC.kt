@@ -37,6 +37,7 @@ class HarderMC : JavaPlugin(), Listener {
     private var log: Logger = logger
     var enchantLimiter: LimitEnchantments? = null
     override fun onEnable() {
+
         val customRecipeManager = CustomRecipeManager(this)
         enchantLimiter = LimitEnchantments(this)
         val pluginManager = Bukkit.getPluginManager()
