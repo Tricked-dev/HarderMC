@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Tricked-dev 2023.
+ * Copyright (c) Tricked-dev 2024.
  */
 
 package dev.tricked.hardermc.recipes.diamondarmor

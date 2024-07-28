@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HarderMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/HarderMC.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PaperTimeseries.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PaperTimeseries.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev.tricked.HarderMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dev.tricked.HarderMC.main.iml" />
     </modules>
   </component>
 </project>

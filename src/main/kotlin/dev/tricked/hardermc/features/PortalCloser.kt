@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Tricked-dev 2023.
+ * Copyright (c) Tricked-dev 2024.
  */
 
 package dev.tricked.hardermc.features
@@ -15,7 +15,7 @@ import org.bukkit.block.data.type.EndPortalFrame
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
-
+//TODO: enable after fixing said issues :)
 @Name("Portal closer")
 @Description("The portal has gone unstable it cant keep up being open for more than 10 minutes")
 class PortalCloser(mc: HarderMC) : BaseTool(mc), Listener {

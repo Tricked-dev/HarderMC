@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Tricked-dev 2023.
+ * Copyright (c) Tricked-dev 2024.
  */
 
 package dev.tricked.hardermc.features
@@ -79,6 +79,8 @@ class VillagerTradeModifier(mc: HarderMC) : BaseTool(mc), Listener {
                 val customTrade = MerchantRecipe(resultItem, recipe.maxUses)
                 customTrade.priceMultiplier = recipe.priceMultiplier
                 customTrade.ingredients = recipe.ingredients
+                customTrade.villagerExperience = recipe.villagerExperience;
+                customTrade.uses = recipe.uses
 
                 recipes[recipes.indexOf(recipe)] = customTrade
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Tricked-dev 2023.
+ * Copyright (c) Tricked-dev 2024.
  */
 
 package dev.tricked.hardermc
@@ -21,19 +21,14 @@ import dev.tricked.hardermc.recipes.ironarmor.IronBoots
 import dev.tricked.hardermc.recipes.ironarmor.IronChestplate
 import dev.tricked.hardermc.recipes.ironarmor.IronHelmet
 import dev.tricked.hardermc.recipes.ironarmor.IronLeggings
-import dev.tricked.hardermc.server.ServerMain
 import dev.tricked.hardermc.utilities.BaseTool
-import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
-import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
-import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Logger
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
 
-class HarderMC : JavaPlugin(), Listener {
+class HarderMC : JavaPlugin() {
     private var log: Logger = logger
     var enchantLimiter: LimitEnchantments? = null
     override fun onEnable() {
@@ -46,7 +41,7 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(ChestLootToBooks(this), this)
         pluginManager.registerEvents(SmallerShulkers(this), this)
         pluginManager.registerEvents(NoTotem(this), this)
-        pluginManager.registerEvents(PortalCloser(this), this)
+//        pluginManager.registerEvents(PortalCloser(this), this)
         pluginManager.registerEvents(PVPRegenCooldown(this), this)
         pluginManager.registerEvents(VillagerTradeModifier(this), this)
         pluginManager.registerEvents(NetherMining(this), this)
@@ -55,7 +50,6 @@ class HarderMC : JavaPlugin(), Listener {
         pluginManager.registerEvents(MoreHorseLeather(this), this)
         pluginManager.registerEvents(enchantLimiter!!, this)
         pluginManager.registerEvents(customRecipeManager, this)
-        pluginManager.registerEvents(this, this)
 
 
         customRecipeManager.addCustomRecipes(
@@ -84,7 +78,6 @@ class HarderMC : JavaPlugin(), Listener {
             DiamondLeggings(),
             DiamondBoots()
         )
-        ServerMain(this)
         BaseTool.instances.forEach { instance ->
             log.info("${instance.javaClass.simpleName} enabled: ${instance.enabled}")
 
@@ -105,11 +98,7 @@ class HarderMC : JavaPlugin(), Listener {
                 }
             }
         }
-    }
-
-    @EventHandler
-    fun onPlayerJoin(event: PlayerJoinEvent) {
-        event.player.sendMessage(Component.text("Hello, " + event.player.name + "!"))
+        this.saveConfig()
     }
 }
 
