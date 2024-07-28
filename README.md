@@ -28,87 +28,62 @@ A plugin that makes various things *harder*
 
 ## Download
 
-You can download HarderMC on [ko-fi](https://ko-fi.com/s/f8b544c04d)
+You can download HarderMC on [modrinth](https://modrinth.com/plugins/hardermc)
 
 ## TODO
 
 1. Change shulkers to have 1 row of items instead of 3 (blocked)
-2. respawn end crystals after a couple of minutes if dragon fight is still going
-
-## Server Plugin features
-
-1. Custom spawn logic
-    - Players spawn 800 blocks away from spawn in 32 directions
-    - Players get another random 128 blocks around that point
-2. Custom server icon / MOTD
-
-## Server Plugin TODO:
-
-1. change end world daily
-2. vanish
-3. turn players into zombies when leaving for up to 1h
+2. respawn end crystals after a couple of minutes if dragon fight is still going=
 
 ## Config
 
-The config will automatically be generated on startup this is a snapshot of what it could look like
+The config will automatically be generated on startup this is a snapshot of what it could look like, to apply changes just edit the config and restart the server
 
 ```yml
 feature:
-    CustomRecipeManager:
-        customShieldEnabled: true
-        customEyeOfEnderEnabled: true
-        customEnchantmentTableEnabled: true
-        helpBookEnabled: true
-        enabled: true
-        customArmorEnabled: true
-    LimitEnchantments:
-        enabled: true
-    MendingNerf:
-        enabled: true
-        factor: 10.0
-    NoExplodieBed:
-        enabled: true
-        disableEndAnchor: true
-        disableEndBed: true
-        disableNetherBed: true
-        disableOverworldAnchor: true
-        enableObsidianEndCrystal: false
-    ChestLootToBooks:
-        enabled: true
-    SmallerShulkers:
-        enabled: true
-    NoTotem:
-        enabled: true
-    PortalCloser:
-        enabled: true
-        delayTicks: 12000
-    PVPRegenCooldown:
-        enabled: true
-        cooldownSeconds: 120
-    VillagerTradeModifier:
-        enabled: true
-    NetherMining:
-        enabled: true
-        depth: 30
-        factor: 5
-    MoreElytraDamage:
-        enabled: true
-        factor: 40
-    PiglinEnderPearlRemover:
-        enabled: true
-    MoreHorseLeather:
-        enabled: true
-        extraLeatherCount: 4
-        extraLeatherCountRandom: 4
-    CustomSpawnLogic:
-        enabled: true
-        numSpawnPoints: 32
-        spawnDistance: 800
-        spawnRadius: 128
-    ServerMotD:
-        enabled: true
-        maxPlayers: 0
-        serverName: HarderMC
+  CustomRecipeManager:
+    customShieldEnabled: true
+    customEyeOfEnderEnabled: true
+    customEnchantmentTableEnabled: true
+    helpBookEnabled: true
+    enabled: true
+    customArmorEnabled: true
+  LimitEnchantments:
+    enabled: true
+  MendingNerf:
+    enabled: true
+    factor: 10.0
+  NoExplodieBed:
+    enabled: true
+    disableEndAnchor: true
+    disableEndBed: true
+    disableNetherBed: true
+    disableOverworldAnchor: true
+    enableObsidianEndCrystal: false
+  ChestLootToBooks:
+    enabled: true
+  SmallerShulkers:
+    enabled: true
+  NoTotem:
+    enabled: true
+  PVPRegenCooldown:
+    enabled: true
+    cooldownSeconds: 120
+  VillagerTradeModifier:
+    enabled: true
+  NetherMining:
+    enabled: true
+    depth: 30
+    factor: 5
+  MoreElytraDamage:
+    enabled: true
+    factor: 40
+  PiglinEnderPearlRemover:
+    enabled: true
+  MoreHorseLeather:
+    enabled: true
+    extraLeatherCount: 4
+    extraLeatherCountRandom: 4
 ```
 
 ## License
